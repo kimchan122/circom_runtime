@@ -300,11 +300,11 @@ function flatArray(a) {
 }
 
 function fnvHash(str) {
-    const uint64_max = Number(2) ** Number(64);
-    let hash = Number("0xCBF29CE484222325");
+    const uint64_max = BigInt(2) ** BigInt(64);
+    let hash = BigInt("0xCBF29CE484222325");
     for (var i = 0; i < str.length; i++) {
-	hash ^= Number(str[i].charCodeAt());
-	hash *= Number(0x100000001B3);
+	hash ^= BigInt(str[i].charCodeAt());
+	hash *= BigInt(0x100000001B3);
 	hash %= uint64_max;
     }
     let shash = hash.toString(16);
@@ -312,4 +312,3 @@ function fnvHash(str) {
     shash = '0'.repeat(n).concat(shash);
     return shash;
 }
-
